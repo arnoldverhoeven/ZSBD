@@ -16,8 +16,9 @@ export default async (request, context) => {
   try {
     const res = await fetch(`${API}&id=${id}`, { signal: AbortSignal.timeout(2500) });
     if (!res.ok) return response;
-    const { products } = await res.json();
-    const p = products && products[0];
+    // Met ?id= geeft de API { store, product } terug (zonder id: { products: [...] }).
+    const data = await res.json();
+    const p = data.product || (data.products && data.products[0]);
     if (!p) return response;
 
     const pageUrl = `${SITE}/product.html?id=${id}`;
