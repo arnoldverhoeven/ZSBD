@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Je mandje | ZSBD</title>
+<meta name="description" content="Je mandje bij ZSBD.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://zsbd.be/mandje.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Je mandje | ZSBD">
+<meta property="og:description" content="Je mandje bij ZSBD.">
+<meta property="og:image" content="https://zsbd.be/img/zsbd-kerststuk-roze-droom.jpg">
+<meta name="theme-color" content="#FBF5EE">
+<link rel="icon" href="img/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preload" href="fonts/Lora-var.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="fonts/DMSans-var.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="zsbd.css?v=1">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="index.html" aria-label="ZSBD, naar de startpagina"><span class="brand-name">ZSBD</span><span class="brand-sub">handgemaakt door Jennifer Beyens</span></a>
+    <nav class="main-nav" aria-label="Menu">
+      <a href="winkel.html" data-nav="Alles">Winkel</a><a href="winkel.html?categorie=Kerst" data-nav="Kerst">Kerst</a><a href="winkel.html?categorie=Kaarsen%20%26%20schaaltjes" data-nav="Kaarsen & schaaltjes">Kaarsen &amp; schaaltjes</a><a href="winkel.html?categorie=Voor%20dierenvrienden" data-nav="Voor dierenvrienden">Voor dierenvrienden</a><a href="index.html#afhalen" data-nav="Afhalen">Afhalen</a><a href="index.html#over" data-nav="Over">Over mij</a>
+    </nav>
+    <div class="header-actions">
+      <a class="bag-link" href="mandje.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="label">Mandje</span><span class="count" data-count="bag"></span></a>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <div class="page-head">
+    <div class="crumbs"><a href="index.html">Home</a> / Mandje</div>
+    <h1>Je mandje</h1>
+  </div>
+  <div class="bag-page">
+    <div id="bag-lines"><p class="grid-note">Laden…</p></div>
+    <aside class="summary" id="summary" hidden>
+      <h2>Afronden</h2>
+      <form class="form" id="checkout-form" novalidate>
+        <fieldset class="methods">
+          <legend>Hoe wil je je bestelling ontvangen?</legend>
+          <label class="method" id="m-pickup">
+            <input type="radio" name="method" value="pickup" checked>
+            <span><strong>Afhalen in Temse <span class="tag">Aanbevolen</span></strong><small>Na je bestelling spreken we samen een afhaalmoment af.</small></span>
+            <span class="cost">Gratis</span>
+          </label>
+          <label class="method" id="m-ship">
+            <input type="radio" name="method" value="ship">
+            <span><strong>Laten verzenden</strong><small>Binnen België, extra stevig verpakt.</small></span>
+            <span class="cost" id="ship-cost"></span>
+          </label>
+        </fieldset>
+        <div class="sum-row"><span>Subtotaal</span><span id="sum-sub"></span></div>
+        <div class="sum-row"><span id="sum-ship-label">Afhalen</span><span id="sum-ship"></span></div>
+        <p class="sum-hint" id="sum-hint"></p>
+        <div class="sum-row sum-total"><span>Totaal</span><span id="sum-total"></span></div>
+        <label>Naam<input id="f-name" autocomplete="name" required></label>
+        <label>E-mailadres<input id="f-email" type="email" autocomplete="email" required></label>
+        <label>Gsm-nummer<input id="f-phone" type="tel" autocomplete="tel" placeholder="Om een afhaalmoment af te spreken"></label>
+        <div class="address" id="address" hidden>
+          <div class="row">
+            <label>Straat<input id="f-street" autocomplete="address-line1"></label>
+            <label>Nr.<input id="f-number"></label>
+          </div>
+          <div class="row-pc">
+            <label>Postcode<input id="f-postal" autocomplete="postal-code" inputmode="numeric"></label>
+            <label>Gemeente<input id="f-city" autocomplete="address-level2"></label>
+          </div>
+        </div>
+        <label>Opmerking (optioneel)<textarea id="f-note" rows="2" placeholder="Bv. een naam voor op een kerstbal, of wanneer je best kan afhalen"></textarea></label>
+        <p class="form-error" id="f-error" role="alert"></p>
+        <button class="btn" type="submit" id="f-submit">Bestellen en betalen</button>
+        <p class="secure">Je betaalt veilig via Mollie.</p>
+        <div class="notice" id="pay-off" hidden>Online betalen wordt binnenkort geactiveerd. Wil je nu al iets bestellen? Stuur me een <a href="https://wa.me/32470138134" rel="noopener">WhatsApp</a> of <a href="mailto:jenniferbeyens90@gmail.com">mail</a>, dan leg ik het voor je opzij.</div>
+      </form>
+    </aside>
+  </div>
+  <div class="page-end"></div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">ZSBD</div>
+        <p>Handgemaakte creaties vol warmte: kerststukken, kaarsschaaltjes, beertjes met roosjes, kaarten en cadeautjes voor dierenvrienden.</p>
+      </div>
+      <div>
+        <h4>Winkel</h4>
+        <ul>
+          <li><a href="winkel.html">Alles</a></li>
+          <li><a href="winkel.html?categorie=Kerst">Kerst</a></li>
+          <li><a href="winkel.html?categorie=Kaarsen%20%26%20schaaltjes">Kaarsen &amp; schaaltjes</a></li>
+          <li><a href="winkel.html?categorie=Voor%20dierenvrienden">Voor dierenvrienden</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Bestellen</h4>
+        <ul>
+          <li><a href="index.html#afhalen">Gratis afhalen in Temse</a></li>
+          <li>Verzenden in België: <span data-ship>€ 6,95</span></li>
+          <li>Veilig online betalen via Mollie</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>Jennifer Beyens, Temse</li>
+          <li><a href="mailto:jenniferbeyens90@gmail.com">jenniferbeyens90@gmail.com</a></li>
+          <li><a href="https://wa.me/32470138134" rel="noopener">Stuur een WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 ZSBD · Jennifer Beyens · 9140 Temse · Ondernemingsnummer 1045.421.854</span>
+      <span>Webshop door <a href="https://www.shopzo.be" rel="noopener">Shopzo</a></span>
+    </div>
+  </div>
+</footer>
+<script src="zsbd-client.js?v=1"></script>
+<script src="mandje.js?v=1"></script>
+</body>
+</html>

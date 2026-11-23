@@ -1,0 +1,2 @@
+Lora (Cyreal) en DM Sans (Colophon Foundry / Google) vallen onder de SIL Open Font License 1.1.
+Zie OFL-DMSans.txt en https://openfontlicense.org. De bestanden zijn gesubset tot Latijnse tekens.

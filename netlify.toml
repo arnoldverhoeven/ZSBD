@@ -1,0 +1,31 @@
+# zsbd.be: statische webshop, producten en betalingen via de Shopzo API (api.shopzo.be).
+[build]
+  publish = "."
+
+# Productfoto's die Jennifer via het Shopzo-dashboard oplaadt staan in Supabase Storage;
+# zo kan de image-CDN van Netlify ze verkleinen.
+[images]
+  remote_images = ["https://jbzdingkkqbmpyhrloux\\.supabase\\.co/storage/v1/object/public/.*"]
+
+[[redirects]]
+  from = "https://www.zsbd.be/*"
+  to = "https://zsbd.be/:splat"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
