@@ -8,6 +8,12 @@
   remote_images = ["https://jbzdingkkqbmpyhrloux\\.supabase\\.co/storage/v1/object/public/.*"]
 
 # Oude pagina (de kaarsen hebben geen geur)
+# Kerstpakketten en kerstdecoratie staan samen onder Kerst
+[[redirects]]
+  from = "/kerstpakketten.html"
+  to = "/kerst.html"
+  status = 301
+
 [[redirects]]
   from = "/geurkaarsen.html"
   to = "/kaarsen.html"

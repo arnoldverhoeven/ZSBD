@@ -13,9 +13,9 @@ const CONTACT = {
 };
 
 // Volgorde van de categorieën in menu, filters en "Wat ik maak".
-const CATEGORY_ORDER = ['Kerstpakketten', 'Kaarsen & schaaltjes', 'Kerst', 'Beertjes met roosjes', 'Kaarten', 'Voor dierenvrienden'];
+const CATEGORY_ORDER = ['Kerst', 'Kaarsen & schaaltjes', 'Beertjes met roosjes', 'Kaarten', 'Voor dierenvrienden'];
 // Categorieën met een eigen (SEO-)pagina.
-const CATEGORY_PAGES = { Kerstpakketten: '/kerstpakketten.html', 'Kaarsen & schaaltjes': '/kaarsen.html' };
+const CATEGORY_PAGES = { Kerst: '/kerst.html', 'Kaarsen & schaaltjes': '/kaarsen.html' };
 function categoryUrl(cat) { return CATEGORY_PAGES[cat] || `/winkel.html?categorie=${encodeURIComponent(cat)}`; }
 
 /* ---------- Winkelinstellingen (verzendkost, afhalen) uit het Shopzo-dashboard ---------- */

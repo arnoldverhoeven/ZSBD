@@ -4,8 +4,7 @@ const state = { cat: params.get('categorie') || '', sort: params.get('sorteer') 
 let products = [];
 
 const INTRO = {
-  Kerstpakketten: 'Handgemaakte kerstpakketten met kaars, kerstbal en kaart.',
-  Kerst: 'Handgemaakte kerststukken en kerstdecoratie. Vaak uniek: op is op.',
+  Kerst: 'Handgemaakte kerstpakketten, kerststukken en kerstdecoratie. Vaak uniek: op is op.',
   'Kaarsen & schaaltjes': 'Handgemaakte kaarsen in handgevormde schaaltjes.',
   'Beertjes met roosjes': 'Beertjes afgewerkt met prachtige bloemen.',
   Kaarten: 'Handgemaakte kaarten voor elk moment.',

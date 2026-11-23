@@ -1,8 +1,7 @@
 // Startpagina: "Wat ik maak" (categorieën) en de producten die nu online staan.
 const MAKES = {
-  Kerstpakketten: { text: 'Handgemaakte kerstgeschenken, ook op maat', img: '/img/zsbd-kerstpakket-warm-welkom.jpg' },
   'Kaarsen & schaaltjes': { text: 'Kaarsen in handgevormde schaaltjes', img: '/img/zsbd-kaarsschaaltje-koper.jpg' },
-  Kerst: { text: 'Kerststukken en kerstdecoratie', img: '/img/zsbd-kerststuk-roze-droom.jpg' },
+  Kerst: { text: 'Kerstpakketten, kerststukken en decoratie', img: '/img/zsbd-kerststuk-roze-droom.jpg' },
   'Beertjes met roosjes': { text: 'Beertjes afgewerkt met bloemen' },
   Kaarten: { text: 'Handgemaakt, voor elk moment' },
   'Voor dierenvrienden': { text: 'Voor wie thuis een hond of kat heeft', img: '/img/zsbd-kerstbal-ik-ben-de-baas.jpg' }

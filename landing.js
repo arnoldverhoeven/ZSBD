@@ -1,8 +1,8 @@
-// Landingspagina's (kaarsen, kerstpakketten): toont de passende producten.
+// Landingspagina's (kaarsen, kerst): toont de passende producten.
 const LANDING = {
   kaars: (p) => p.category === 'Kaarsen & schaaltjes' || (p.tags || []).includes('kaars'),
-  kerstpakket: (p) => p.category === 'Kerstpakketten',
-  'kerst-extra': (p) => p.category !== 'Kerstpakketten'
+  kerst: (p) => p.category === 'Kerst',
+  'kerst-extra': (p) => p.category !== 'Kerst'
 };
 
 (async function () {
@@ -20,6 +20,6 @@ const LANDING = {
       ? sortByCategory(list).slice(0, 8).map(productCard).join('')
       : '<p class="grid-note">Binnenkort weer beschikbaar. Op zoek naar iets speciaals? <a class="text-link" href="https://wa.me/32470138134" rel="noopener">Stuur ons een berichtje</a>.</p>';
   });
-  if (location.pathname.includes('kerstpakket')) markNav('Kerstpakketten');
+  if (location.pathname.includes('kerst')) markNav('Kerst');
   if (location.pathname.includes('kaarsen')) markNav('Kaarsen & schaaltjes');
 })();
