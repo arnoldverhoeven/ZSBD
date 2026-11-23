@@ -1,4 +1,4 @@
-// Productpagina: foto's, keuzes (bv. geur of kleur), voorraad en in het mandje.
+// Productpagina: foto's, keuzes (bv. kleur of formaat), voorraad en in het mandje.
 (async function () {
   const id = new URLSearchParams(location.search).get('id');
   const loading = document.getElementById('pd-loading');

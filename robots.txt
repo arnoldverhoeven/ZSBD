@@ -1,4 +1,4 @@
-# zsbd.be: handgemaakte geurkaarsen, kerstpakketten en kerstdecoratie uit Temse
+# zsbd.be: handgemaakte kaarsen, kerstpakketten en kerstdecoratie uit Temse
 User-agent: *
 Allow: /
 Disallow: /mandje.html

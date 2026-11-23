@@ -7,6 +7,12 @@
 [images]
   remote_images = ["https://jbzdingkkqbmpyhrloux\\.supabase\\.co/storage/v1/object/public/.*"]
 
+# Oude pagina (de kaarsen hebben geen geur)
+[[redirects]]
+  from = "/geurkaarsen.html"
+  to = "/kaarsen.html"
+  status = 301
+
 [[redirects]]
   from = "https://www.zsbd.be/*"
   to = "https://zsbd.be/:splat"

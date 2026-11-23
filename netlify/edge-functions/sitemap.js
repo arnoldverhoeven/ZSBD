@@ -5,7 +5,7 @@ const SITE = 'https://zsbd.be';
 const STATIC = [
   ['/', '1.0', 'weekly'],
   ['/kerstpakketten.html', '0.9', 'weekly'],
-  ['/geurkaarsen.html', '0.9', 'weekly'],
+  ['/kaarsen.html', '0.9', 'weekly'],
   ['/winkel.html', '0.8', 'daily'],
   ['/winkel.html?categorie=Kerst', '0.7', 'weekly'],
   ['/winkel.html?categorie=Voor%20dierenvrienden', '0.6', 'weekly']
