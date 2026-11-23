@@ -1,2 +1,21 @@
+# zsbd.be: handgemaakte geurkaarsen, kerstpakketten en kerstdecoratie uit Temse
 User-agent: *
 Allow: /
+Disallow: /mandje.html
+Disallow: /bedankt.html
+
+# AI-assistenten mogen de site lezen (vindbaarheid in ChatGPT, Claude, Perplexity, ...)
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://zsbd.be/sitemap.xml

@@ -4,9 +4,10 @@ const state = { cat: params.get('categorie') || '', sort: params.get('sorteer') 
 let products = [];
 
 const INTRO = {
-  Kerst: 'Kerststukken en decoratie, met de hand gemaakt. Vaak uniek: op is op.',
-  'Kaarsen & schaaltjes': 'Handgevormde schaaltjes, met of zonder kaars.',
-  'Beertjes met roosjes': 'Zachte beertjes, versierd met roosjes.',
+  Kerstpakketten: 'Handgemaakte kerstpakketten met geurkaars, kerstbal en kaart.',
+  Kerst: 'Handgemaakte kerststukken en kerstdecoratie. Vaak uniek: op is op.',
+  'Geurkaarsen & schaaltjes': 'Handgemaakte geurkaarsen in handgevormde schaaltjes.',
+  'Beertjes met roosjes': 'Beertjes afgewerkt met prachtige bloemen.',
   Kaarten: 'Handgemaakte kaarten voor elk moment.',
   'Voor dierenvrienden': 'Cadeautjes voor wie thuis een hond of kat heeft.'
 };
@@ -40,12 +41,13 @@ function apply() {
   document.getElementById('shop-title').textContent = title;
   document.getElementById('crumb-current').textContent = state.cat || 'Winkel';
   document.getElementById('shop-intro').textContent = INTRO[state.cat] || 'Alles met de hand gemaakt in Temse. Bestel online en haal gratis af.';
-  document.title = `${title} | ZSBD`;
+  document.title = state.cat ? `${title}: handgemaakt in Temse | ZSBD` : 'Winkel: handgemaakte geurkaarsen, kerstdecoratie en cadeaus | ZSBD Temse';
+  setCanonical(state.cat ? `/winkel.html?categorie=${encodeURIComponent(state.cat)}` : '/winkel.html');
   markNav(state.cat || 'Alles');
 
   document.getElementById('shop-grid').innerHTML = list.length
     ? list.map(productCard).join('')
-    : `<p class="grid-note">Hier staat nog niets online. Op zoek naar iets speciaals? <a class="text-link" href="https://wa.me/32470138134" rel="noopener">Stuur me een berichtje</a>.</p>`;
+    : `<p class="grid-note">Hier staat nog niets online. Op zoek naar iets speciaals? <a class="text-link" href="https://wa.me/32470138134" rel="noopener">Stuur ons een berichtje</a>.</p>`;
   syncUrl();
 }
 

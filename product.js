@@ -6,15 +6,23 @@
   try { products = await shopzoFetchProducts(); } catch { /* hieronder afgehandeld */ }
   const p = products.find((x) => x.id === id);
   if (!p) {
-    loading.innerHTML = 'Dit stuk vond ik niet terug, misschien is het intussen verkocht. <a class="text-link" href="winkel.html">Bekijk de winkel</a>.';
+    loading.innerHTML = 'Dit stuk vonden we niet terug, misschien is het intussen verkocht. <a class="text-link" href="/winkel.html">Bekijk de winkel</a>.';
     return;
   }
 
-  document.title = `${p.name} | ZSBD`;
+  document.title = `${p.name} | Handgemaakt in Temse | ZSBD`;
   document.querySelector('meta[name="description"]').setAttribute('content', (p.description || '').slice(0, 155));
+  setCanonical(`/product.html?id=${encodeURIComponent(p.id)}`);
+  if (!document.querySelector('script[data-product-ld]')) {
+    const ldEl = document.createElement('script');
+    ldEl.type = 'application/ld+json';
+    ldEl.dataset.productLd = '1';
+    ldEl.textContent = JSON.stringify(productJsonLd(p));
+    document.head.appendChild(ldEl);
+  }
   const crumbCat = document.getElementById('pd-crumb-cat');
   crumbCat.textContent = p.category || 'Winkel';
-  crumbCat.href = p.category ? `winkel.html?categorie=${encodeURIComponent(p.category)}` : 'winkel.html';
+  crumbCat.href = p.category ? categoryUrl(p.category) : '/winkel.html';
   document.getElementById('pd-crumb-name').textContent = p.name;
   document.getElementById('pd-cat').textContent = p.category || '';
   document.getElementById('pd-name').textContent = p.name;
@@ -85,7 +93,7 @@
     addBtn.disabled = p.stock <= 0 || stock === 0;
     addBtn.textContent = p.stock <= 0 ? 'Uitverkocht' : stock === 0 ? 'Niet meer beschikbaar in deze keuze' : 'In mijn mandje';
     const unique = isUnique(p);
-    if (p.stock <= 0) stockEl.textContent = 'Dit stuk is uitverkocht. Vraag gerust of ik er nog een kan maken.';
+    if (p.stock <= 0) stockEl.textContent = 'Dit stuk is uitverkocht. Vraag gerust of we er nog een kunnen maken.';
     else if (stock === null) stockEl.textContent = `Kies eerst je ${options[selected.findIndex((x) => !x)].name.toLowerCase()}.`;
     else if (stock === 0) stockEl.textContent = 'Deze keuze is uitverkocht. Kies een andere.';
     else if (unique && stock === 1) stockEl.innerHTML = '<span class="low">Uniek stuk:</span> er is er maar één van.';
@@ -116,7 +124,7 @@
     } else {
       addToCart(p.id, 1);
     }
-    location.href = 'mandje.html';
+    location.href = '/mandje.html';
   });
 
   render();

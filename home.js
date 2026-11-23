@@ -1,10 +1,11 @@
 // Startpagina: "Wat ik maak" (categorieën) en de producten die nu online staan.
 const MAKES = {
-  Kerst: { text: 'Kerststukken en tafeldecoratie', img: 'img/zsbd-kerststuk-roze-droom.jpg' },
-  'Kaarsen & schaaltjes': { text: 'Handgevormd, met of zonder kaars', img: 'img/zsbd-kaarsschaaltje-koper.jpg' },
-  'Beertjes met roosjes': { text: 'Een lief cadeautje, het hele jaar' },
+  Kerstpakketten: { text: 'Handgemaakte kerstgeschenken, ook op maat', img: '/img/zsbd-kerstpakket-warm-welkom.jpg' },
+  'Geurkaarsen & schaaltjes': { text: 'Geurkaarsen in handgevormde schaaltjes', img: '/img/zsbd-kaarsschaaltje-koper.jpg' },
+  Kerst: { text: 'Kerststukken en kerstdecoratie', img: '/img/zsbd-kerststuk-roze-droom.jpg' },
+  'Beertjes met roosjes': { text: 'Beertjes afgewerkt met bloemen' },
   Kaarten: { text: 'Handgemaakt, voor elk moment' },
-  'Voor dierenvrienden': { text: 'Voor wie thuis een hond of kat heeft', img: 'img/zsbd-kerstbal-ik-ben-de-baas.jpg' }
+  'Voor dierenvrienden': { text: 'Voor wie thuis een hond of kat heeft', img: '/img/zsbd-kerstbal-ik-ben-de-baas.jpg' }
 };
 
 (async function () {
@@ -23,11 +24,11 @@ const MAKES = {
     // Foto: eerst een productfoto uit die categorie, anders de vaste foto.
     const photo = (inCat.find((p) => p.image_url) || {}).image_url || m.img;
     if (!inCat.length) {
-      return `<a class="make make--soon" href="#over">
+      return `<a class="make make--soon" href="/#over">
         <div class="make-text"><h3>${esc(cat)}</h3><span>${esc(m.text)}</span><span class="soon">Binnenkort online, vraag gerust</span></div>
       </a>`;
     }
-    return `<a class="make" href="winkel.html?categorie=${encodeURIComponent(cat)}">
+    return `<a class="make" href="${categoryUrl(cat)}">
       ${photo ? `<div class="make-photo"><img ${imgAttrs(photo, 480, cat)}></div>` : ''}
       <div class="make-text"><h3>${esc(cat)}</h3><span>${esc(m.text)}</span></div>
     </a>`;

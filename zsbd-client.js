@@ -13,7 +13,10 @@ const CONTACT = {
 };
 
 // Volgorde van de categorieën in menu, filters en "Wat ik maak".
-const CATEGORY_ORDER = ['Kerst', 'Kaarsen & schaaltjes', 'Beertjes met roosjes', 'Kaarten', 'Voor dierenvrienden'];
+const CATEGORY_ORDER = ['Kerstpakketten', 'Geurkaarsen & schaaltjes', 'Kerst', 'Beertjes met roosjes', 'Kaarten', 'Voor dierenvrienden'];
+// Categorieën met een eigen (SEO-)pagina.
+const CATEGORY_PAGES = { Kerstpakketten: '/kerstpakketten.html', 'Geurkaarsen & schaaltjes': '/geurkaarsen.html' };
+function categoryUrl(cat) { return CATEGORY_PAGES[cat] || `/winkel.html?categorie=${encodeURIComponent(cat)}`; }
 
 /* ---------- Winkelinstellingen (verzendkost, afhalen) uit het Shopzo-dashboard ---------- */
 let SHOPZO_STORE = {
@@ -104,7 +107,7 @@ async function shopzoCheckout(details) {
       items: cart.map((l) => (l.variant_id
         ? { product_id: l.product_id, variant_id: l.variant_id, quantity: l.quantity }
         : { product_id: l.product_id, quantity: l.quantity })),
-      redirect_url: new URL(`bedankt.html?methode=${details.method}`, window.location.href).href
+      redirect_url: new URL(`/bedankt.html?methode=${details.method}`, window.location.origin).href
     })
   });
   const data = await res.json().catch(() => ({}));
@@ -143,11 +146,12 @@ function galleryForSelection(p, selected) {
 function isUnique(p) { return (p.tags || []).includes('uniek') || (p.specs || []).some((s) => /^uniek/i.test(s.label)); }
 function sortByCategory(list) {
   const rank = (c) => { const i = CATEGORY_ORDER.indexOf(c); return i < 0 ? 99 : i; };
-  return [...list].sort((a, b) => rank(a) - rank(b));
+  return [...list].sort((a, b) => rank(a.category) - rank(b.category));
 }
 
 /* ---------- Foto's: verkleind via de image-CDN van Netlify, origineel als reserve ---------- */
 const OWN_HOSTS = ['https://zsbd.be/', 'https://www.zsbd.be/', 'https://zsbd.netlify.app/'];
+const SITE_URL = 'https://zsbd.be';
 function optImg(url, width) {
   if (!url) return url;
   let path = null;
@@ -182,7 +186,7 @@ function productCard(p) {
   const opt = (p.options || [])[0];
   const optText = opt && opt.values.length > 1 ? `${opt.values.length} keuzes` : '';
   return `
-    <a class="card" href="product.html?id=${encodeURIComponent(p.id)}">
+    <a class="card" href="/product.html?id=${encodeURIComponent(p.id)}">
       <div class="card-photo">
         <img ${imgAttrs(p.image_url, 640, (p.image_alts || [])[0] || p.name)}>
         ${tag}
@@ -202,6 +206,16 @@ function markNav(name) {
   });
 }
 
+/* SEO: canonical en og:url bijwerken voor pagina's die met parameters werken. */
+function setCanonical(pathAndQuery) {
+  const href = SITE_URL + pathAndQuery;
+  let link = document.querySelector('link[rel="canonical"]');
+  if (!link) { link = document.createElement('link'); link.rel = 'canonical'; document.head.appendChild(link); }
+  link.href = href;
+  const og = document.querySelector('meta[property="og:url"]');
+  if (og) og.setAttribute('content', href);
+}
+
 /* Velden met data-ship vullen met de actuele verzendkost uit het dashboard. */
 async function fillShippingTexts() {
   await shopzoFetchStore();
@@ -209,3 +223,28 @@ async function fillShippingTexts() {
 }
 
 document.addEventListener('DOMContentLoaded', () => { renderCounts(); fillShippingTexts(); });
+
+/* Product-gegevens voor Google (schema.org/Product). Ook gebruikt door de edge function. */
+function productJsonLd(p) {
+  const url = `${SITE_URL}/product.html?id=${encodeURIComponent(p.id)}`;
+  const price = ((p.sale_price_cents ?? p.price_cents) / 100).toFixed(2);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: p.name,
+    description: p.description || undefined,
+    image: galleryItems(p).map((g) => g.url),
+    category: p.category || undefined,
+    brand: { '@type': 'Brand', name: 'ZSBD' },
+    url,
+    offers: {
+      '@type': 'Offer',
+      url,
+      priceCurrency: 'EUR',
+      price,
+      availability: p.stock > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+      itemCondition: 'https://schema.org/NewCondition',
+      seller: { '@type': 'Organization', name: 'ZSBD' }
+    }
+  };
+}

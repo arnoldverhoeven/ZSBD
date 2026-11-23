@@ -58,13 +58,12 @@ p { margin: 0; }
 .btn--ghost { background: transparent; color: var(--cocoa); }
 .btn--ghost:hover { background: var(--sand); border-color: var(--cocoa); }
 .text-link { color: var(--cocoa); text-decoration-color: var(--copper); text-underline-offset: 4px; text-decoration-thickness: 1.5px; font-weight: 600; }
-.eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--copper-dark); }
-.eyebrow::before { content: ''; width: 26px; height: 1.5px; background: var(--copper); }
+.eyebrow { display: block; margin: 0; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--copper-dark); }
 
 /* ---------- Hero ---------- */
 .hero { padding: 56px 0 30px; }
 .hero-grid { display: grid; grid-template-columns: 1fr 1.08fr; gap: 56px; align-items: center; }
-.hero h1 { font-size: clamp(2.4rem, 4.8vw, 3.9rem); margin: 18px 0 20px; }
+.hero h1 { font-size: clamp(2.2rem, 4.2vw, 3.4rem); margin: 16px 0 20px; }
 .hero-lead { font-size: 1.12rem; color: var(--cocoa-soft); max-width: 46ch; }
 .hero-maker { margin-top: 18px; font-family: var(--serif); font-style: italic; color: var(--cocoa); }
 .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
@@ -87,10 +86,10 @@ p { margin: 0; }
 .section-head p { color: var(--cocoa-soft); max-width: 52ch; margin-top: 8px; }
 
 /* ---------- Wat ik maak ---------- */
-.makes { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+.makes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .make { text-decoration: none; background: var(--sand); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; min-height: 100%; transition: transform .2s; }
 .make:hover { transform: translateY(-3px); }
-.make-photo { aspect-ratio: 1; overflow: hidden; }
+.make-photo { aspect-ratio: 4 / 3; overflow: hidden; }
 .make-photo img { width: 100%; height: 100%; object-fit: cover; }
 .make-text { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
 .make-text h3 { font-size: 1.2rem; }
@@ -121,13 +120,16 @@ p { margin: 0; }
 /* ---------- Afhalen ---------- */
 .pickup { margin-top: 90px; background: var(--sand); padding: 80px 0; }
 .pickup-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 60px; align-items: start; }
-.pickup h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); margin: 14px 0 16px; }
+.pickup h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); margin: 12px 0 16px; }
 .pickup-lead { color: var(--cocoa-soft); max-width: 44ch; }
 .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; counter-reset: step; }
 .steps li { background: var(--shell); border-radius: var(--radius); padding: 20px 22px 20px 74px; position: relative; counter-increment: step; }
 .steps li::before { content: counter(step); position: absolute; left: 22px; top: 20px; width: 34px; height: 34px; border-radius: 50%; background: var(--cocoa); color: var(--shell); font-family: var(--serif); font-weight: 600; display: flex; align-items: center; justify-content: center; }
 .steps strong { display: block; font-family: var(--serif); font-size: 1.12rem; font-weight: 600; }
 .steps span { color: var(--cocoa-soft); font-size: 0.95rem; }
+.pickup-address { margin-top: 20px; background: var(--shell); border-radius: 14px; padding: 14px 18px; font-size: 0.98rem; display: inline-block; }
+.pickup-address strong { display: block; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--copper-dark); margin-bottom: 2px; }
+.pickup-address span { color: var(--cocoa-soft); font-size: 0.9rem; }
 .ship-note { margin-top: 18px; font-size: 0.93rem; color: var(--cocoa-soft); }
 .ship-note strong { color: var(--cocoa); }
 
@@ -136,11 +138,29 @@ p { margin: 0; }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 .about-photo { border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 5; background: var(--sand); max-height: 560px; }
 .about-photo img { width: 100%; height: 100%; object-fit: cover; }
-.about h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); margin: 14px 0 18px; }
+.about h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); margin: 12px 0 18px; }
 .about p + p { margin-top: 14px; }
 .about p { color: var(--cocoa-soft); max-width: 52ch; }
 .about-sign { margin-top: 22px; font-family: var(--serif); font-style: italic; font-size: 1.3rem; color: var(--cocoa); }
 .contact-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+
+/* ---------- Landingspagina's (geurkaarsen, kerstpakketten) ---------- */
+.landing-head p { max-width: 68ch; font-size: 1.06rem; }
+.landing-text { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 80px; padding: 44px; background: var(--sand); border-radius: var(--radius); }
+.landing-text h2 { font-size: 1.5rem; margin-bottom: 12px; }
+.landing-text p { color: var(--cocoa-soft); }
+.landing-text p + p { margin-top: 12px; }
+.landing-text .safety { font-size: 0.88rem; font-style: italic; }
+.landing-extra { padding-top: 70px; }
+.landing-faq { margin-top: 70px; max-width: 820px; }
+.landing-faq h2 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); margin-bottom: 18px; }
+.faq details { border-bottom: 1px solid var(--line); padding: 16px 0; }
+.faq summary { cursor: pointer; font-family: var(--serif); font-size: 1.15rem; font-weight: 500; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; color: var(--copper); font-family: var(--sans); font-weight: 600; }
+.faq details[open] summary::after { content: '–'; }
+.faq p { margin-top: 10px; color: var(--cocoa-soft); max-width: 70ch; }
+.site-footer address { font-style: normal; }
 
 /* ---------- Pagina's ---------- */
 .page-head { padding: 40px 0 26px; }
@@ -259,7 +279,6 @@ p { margin: 0; }
 /* ---------- Responsief ---------- */
 @media (max-width: 1080px) {
   .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .makes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .header-row { flex-wrap: wrap; padding: 12px 0; gap: 12px 18px; }
   .main-nav { order: 3; flex: 1 0 100%; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
@@ -268,7 +287,8 @@ p { margin: 0; }
 @media (max-width: 860px) {
   .wrap { padding: 0 18px; }
   .hero { padding-top: 26px; }
-  .hero-grid, .pickup-grid, .about-grid, .pd, .bag-page { grid-template-columns: 1fr; gap: 34px; }
+  .hero-grid, .pickup-grid, .about-grid, .pd, .bag-page, .landing-text { grid-template-columns: 1fr; gap: 34px; }
+  .landing-text { padding: 26px 22px; margin-top: 56px; }
   .hero-photos { height: 420px; min-height: 0; gap: 10px; }
   .pd-info, .summary { position: static; }
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 14px; }

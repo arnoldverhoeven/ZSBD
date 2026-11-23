@@ -23,7 +23,7 @@ async function renderBag() {
   const cart = getCart();
   if (!cart.length) {
     summary.hidden = true;
-    linesEl.innerHTML = '<div class="empty"><p>Je mandje is nog leeg.</p><a class="btn" href="winkel.html">Naar de winkel</a></div>';
+    linesEl.innerHTML = '<div class="empty"><p>Je mandje is nog leeg.</p><a class="btn" href="/winkel.html">Naar de winkel</a></div>';
     return;
   }
 
@@ -50,7 +50,7 @@ async function renderBag() {
     const unit = p.sale_price_cents ?? p.price_cents;
     const img = (v && v.image_url) || p.image_url;
     return `<div class="bag-line">
-      <a href="product.html?id=${encodeURIComponent(p.id)}"><img ${imgAttrs(img, 200, '')}></a>
+      <a href="/product.html?id=${encodeURIComponent(p.id)}"><img ${imgAttrs(img, 200, '')}></a>
       <div>
         <h3>${esc(p.name)}</h3>
         ${v ? `<div class="variant">${esc((p.options[0] || {}).name || 'Keuze')}: ${esc(v.title)}</div>` : ''}
@@ -66,7 +66,7 @@ async function renderBag() {
       </div>
       <div class="line-price">${euro(unit * qty)}</div>
     </div>`;
-  }).join('') + '<p style="margin-top:22px"><a class="text-link" href="winkel.html">Verder winkelen</a></p>';
+  }).join('') + '<p style="margin-top:22px"><a class="text-link" href="/winkel.html">Verder winkelen</a></p>';
 
   subtotal = lines.reduce((n, l) => n + (l.p.sale_price_cents ?? l.p.price_cents) * l.qty, 0);
 
