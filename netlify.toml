@@ -25,9 +25,17 @@
   status = 301
   force = true
 
+# Beveiligingsheaders voor de hele site.
+# CSP: alles van zsbd.be zelf; de Shopzo API (api.shopzo.be) voor producten en afrekenen;
+# productfoto's uit het Shopzo-dashboard komen uit Supabase Storage. Inline <style>-attributen
+# worden nog gebruikt, daarom 'unsafe-inline' enkel voor style-src. De JSON-LD-blokken zijn
+# data (application/ld+json) en vallen niet onder script-src.
 [[headers]]
   for = "/*"
   [headers.values]
+    Strict-Transport-Security = "max-age=31536000"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://jbzdingkkqbmpyhrloux.supabase.co; font-src 'self'; connect-src 'self' https://api.shopzo.be; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-Frame-Options = "SAMEORIGIN"
